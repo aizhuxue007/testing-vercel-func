@@ -16,5 +16,20 @@ export async function GET(request) {
       age: 29,
     },
   };
+  const { searchParams, _ } = new URL(request.url);
+  const rapperName = searchParams.get("name");
+
+  // /api?name<name> - Get a single rapper
+  if (rapperName) {
+    const rapper = rappers[rapperName.toLowerCase()];
+    return rapper
+      ? Response.json(rapper)
+      : new Response(JSON.stringify({ error: "Rapper not found" }), {
+          status: 404,
+          headers: { "Content-Type": "application/json" },
+        });
+  }
+
+  // /api
   return Response.json(rappers);
 }
