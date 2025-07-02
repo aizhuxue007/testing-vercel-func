@@ -19,7 +19,7 @@ export async function GET(request) {
   const { searchParams, _ } = new URL(request.url);
   const rapperName = searchParams.get("name");
 
-  // /api?name<name> - Get a single rapper
+  // /api?name=<name> - Get a single rapper
   if (rapperName) {
     const rapper = rappers[rapperName.toLowerCase()];
     return rapper
