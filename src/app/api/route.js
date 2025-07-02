@@ -24,7 +24,7 @@ export async function GET(request) {
     const rapper = rappers[rapperName.toLowerCase()];
     return rapper
       ? Response.json(rapper)
-      : new Response(JSON.stringify({ error: "Rapper not found" }), {
+      : new Response(JSON.stringify({ error: "Pizza not found" }), {
           status: 404,
           headers: { "Content-Type": "application/json" },
         });
